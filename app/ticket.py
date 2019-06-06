@@ -15,6 +15,7 @@ class Ticket:
     'assignee_id'=	integer,The agent currently assigned to the ticket.
     'created_at'=   date,   When this record was created.
     'updated_at'=	date,   When this record last got updated.
+    'due_at'    =	date,   When this ticket is due.
     'error_message'=string, Reason of object not creating.
     """
 
@@ -30,6 +31,7 @@ class Ticket:
         self.assignee_id = 'Not Available'
         self.created_at = 'Not Available'
         self.updated_at = 'Not Available'
+        self.due_at = 'Not Available'
         self.error_message = None
 
     def set_id(self, id):
@@ -64,6 +66,9 @@ class Ticket:
 
     def set_updated_at(self, updated_at):
         self.updated_at = updated_at
+
+    def set_due_at(self, due_at):
+        self.due_at = due_at
 
     def set_error_message(self, error_message):
         self.error_message = error_message

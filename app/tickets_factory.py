@@ -77,6 +77,7 @@ class TicketObjectCreator:
                 ticket = Ticket()
                 ticket.set_error_message(responce.error_message)
                 tickets.append(ticket)
+                break
         
 
         return tickets
@@ -129,5 +130,8 @@ class ObjectFactory:
 
         if json_ticket['updated_at']:
             ticket.set_updated_at(json_ticket['updated_at'])
+            
+        if json_ticket['due_at']:
+            ticket.set_due_at(json_ticket['due_at'])
 
         return ticket

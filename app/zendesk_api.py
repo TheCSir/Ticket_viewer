@@ -1,4 +1,5 @@
 import requests
+from requests.models import Response
 from configurations import Configuration
 
 class ApiCall:
@@ -19,7 +20,15 @@ class ApiCall:
         # get credentials form file
         user = Configuration().getUserID()
         token = Configuration().getToken()
-        result = requests.get(query, auth=(user,token))
+        try:
+            result = requests.get(query, auth=(user,token))
+        except:
+            the_response = Response()
+            the_response.code = "expired"
+            the_response.error_type = "expired"
+            the_response.status_code = 400
+            the_response._content = b'{ "error" : "Can not connect to API" }'
+            result=the_response
         responce = ApiResult(result)
 
         return responce
