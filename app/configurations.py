@@ -1,4 +1,6 @@
 class Configuration:
+
+	# TODO: extract tokens form python module and make it a json file.
 	""" 
     Configuration Class for Api Configuration details.
     You need replace these variables if you want to 
