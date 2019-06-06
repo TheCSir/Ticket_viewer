@@ -1,7 +1,7 @@
 # Zendesk Mobile Ticket Viewer
 This program can be used to used to view list of all the tickets and display a particular ticket in detail (given access to Zendesk API). The program is coded in python3 and webpages are rendered using flask api.
 
-# Installation and Usage Instruction
+# Startup configurations and running instructions
 
 1. Get a copy of this Repository by any preferable method.
 2. Make sure you have python 3.X.X and python -pip install.
@@ -16,6 +16,12 @@ $ python main.py
 5. While the flask app is running in the background navigate to following URL from your browser.
 ```
 http://localhost:5000/index/
+```
+
+### To run tests.
+1. cd in to the app folder and run the following command.
+```
+$ python unit_tests.py
 ```
 
 # Code description
