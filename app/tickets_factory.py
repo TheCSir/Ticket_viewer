@@ -99,7 +99,9 @@ class ObjectFactory:
         """
 
         ticket = Ticket()
-        ticket.set_id(json_ticket['id'])
+
+        if json_ticket['id']:
+            ticket.set_id(json_ticket['id'])
 
         if json_ticket['type']:
             ticket.set_type(json_ticket['type'])

@@ -47,10 +47,14 @@ def index(page_no=1):
         no_of_tickets = end_ticket - start_ticket
         is_next = False
 
-    return render_template('ticketlist.html', 
-    ticket_list=tickets[start_ticket:end_ticket],tickets_found=tickets_found,
-    current_page = page_no,is_next=is_next,is_previous=is_previous, ticket_count=len(tickets) ,
-    no_of_tickets=no_of_tickets)
+    if not tickets_found:
+        return render_template('ticketlist.html', tickets_found=tickets_found,ticket_list=tickets)
+    else:
+
+        return render_template('ticketlist.html', 
+        ticket_list=tickets[start_ticket:end_ticket],tickets_found=tickets_found,
+        current_page = page_no,is_next=is_next,is_previous=is_previous, ticket_count=len(tickets) ,
+        no_of_tickets=no_of_tickets)
 
 @app.route('/ticket/<int:ticket_id>')
 def disply_selected_ticket(ticket_id):

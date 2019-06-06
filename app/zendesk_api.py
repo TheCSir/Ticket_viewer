@@ -23,12 +23,15 @@ class ApiCall:
         try:
             result = requests.get(query, auth=(user,token))
         except:
+            # manually genarate a responce object
             the_response = Response()
             the_response.code = "expired"
             the_response.error_type = "expired"
             the_response.status_code = 400
             the_response._content = b'{ "error" : "Can not connect to API" }'
             result=the_response
+
+        # get results stored in ApiResult object
         responce = ApiResult(result)
 
         return responce
