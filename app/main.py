@@ -5,6 +5,7 @@ from flask_assets import Bundle, Environment
 app = Flask(__name__)
 
 @app.route('/index/<int:page_no>')
+@app.route('/index/')
 def index(page_no=1):
     """
 	This will render ticket list.

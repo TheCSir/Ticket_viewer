@@ -28,7 +28,8 @@ class ApiCall:
             the_response.code = "expired"
             the_response.error_type = "expired"
             the_response.status_code = 400
-            the_response._content = b'{ "error" : "Can not connect to API" }'
+            the_response._content = b'{ "error" : \
+            " Can not connect to Zendesk API at the moment" }'
             result=the_response
 
         # get results stored in ApiResult object
