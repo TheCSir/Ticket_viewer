@@ -3,6 +3,7 @@
  
 <head>
     <title>Ticket Details</title>
+    <!-- Stylesheets -->
     <link rel="stylesheet" media="screen" href = "{{ url_for('static', filename='bootstrap.min.css') }}">
     <link rel="stylesheet" media="screen" href = "{{ url_for('static', filename='ticketstyles.css') }}">
 </head>
@@ -12,8 +13,10 @@
             <h1>Ticket Details</h1>
         </div>
 
+        <!-- if ticket data is successfully retrieved  -->
         {% if ticket_found %}
         <div class="container single-ticket">
+            <!-- Ticket details table -->
             <table class="table">
                 <tbody>
                     <tr>
@@ -76,6 +79,7 @@
         </div>
         {% endif %}
 
+        <!-- Error message -->
         {% if not ticket_found %}
         <div class="alert alert-danger">
             <p> Error Occurred! :  {{ticket.error_message}}</p>
@@ -83,6 +87,7 @@
         {% endif %}
     </div>
 
+    <!-- Back Button -->
     <div class="container">
         <a href='{{ url_for('index',page_no = 1) }}' class="btn btn-outline-primary" role="button" aria-pressed="true">Return to main Menu</a>
     </div>

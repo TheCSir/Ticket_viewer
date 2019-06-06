@@ -2,6 +2,7 @@
 <html lang="en">
  
 <head>
+    <!-- Stylesheets -->
     <title>Ticket Dashboard</title>
     <link rel="stylesheet" media="screen" href = "{{ url_for('static', filename='bootstrap.min.css') }}">
     <link rel="stylesheet" media="screen" href = "{{ url_for('static', filename='ticketstyles.css') }}">
@@ -12,10 +13,44 @@
             <h1>Mobile Ticket Viewer</h1>
         </div>
 
-
+        <!-- if ticket data is successfully retrieved  -->
         {% if tickets_found %}
         <div>
+            <div class="row container">
+                    <!-- page controls panel -->
+                    <ul class="col-sm pagination">
+                            {% if is_previous %}
+                            <li class="page-item">
+                                <a href='{{ url_for('index',page_no = current_page - 1) }}' class="page-link" role="button" >Previous</a>
+                            </li>
+                            {% else %}
+                            <li class="page-item disabled">
+                                <a href='{{ url_for('index',page_no = current_page - 1) }}' class="page-link" role="button" >Previous</a>
+                            </li>
+                            {% endif %}
+            
+                            <li class="page-item active">
+                                <a href='{{ url_for('index',page_no = current_page) }}' class="page-link" role="button" >{{ current_page }}</a>
+                            </li>
+            
+                            {% if is_next %}
+                            <li class="page-item">
+                                <a href='{{ url_for('index',page_no = current_page + 1) }}' class="page-link" role="button" >Next</a>
+                            </li>
+                            {% else %}
+                            <li class="page-item disabled">
+                                <a href='{{ url_for('index',page_no = current_page + 1) }}' class="page-link" role="button" >Next</a>
+                            </li>
+                            {% endif %}
+                        </ul>
+                <!-- Result numbers panel -->
+                <h5 class=" col-sm text-right no_of_tickets">
+                    <span class="font-weight-bold"> {{ticket_count}}</span> Total tickets, 
+                    <span class="font-weight-bold">{{no_of_tickets}}</span> On this page
+                </h5>
+            </div>
 
+            <!-- Tickets -->
             {% for ticket in ticket_list %}
             <div class="col list-ticket" onclick="location.href='{{ url_for('disply_selected_ticket', ticket_id = ticket['id']) }}';" style="cursor: pointer;">
                 <br><h4 class="text-uppercase">{{ticket['subject']}}</h4>
@@ -25,36 +60,41 @@
             {% endfor %}
 
         </div>
-        <div class="container">
-            <ul class="pagination">
-    
-                {% if is_previous %}
-                <li class="page-item">
-                    <a href='{{ url_for('index',page_no = current_page - 1) }}' class="page-link" role="button" aria-pressed="true">Previous</a>
-                </li>
-                {% else %}
-                <li class="page-item disabled">
-                    <a href='{{ url_for('index',page_no = current_page - 1) }}' class="page-link" role="button" aria-pressed="true">Previous</a>
-                </li>
-                {% endif %}
+            <!-- page controls panel -->
+            <!-- only show if more than 10 results -->
+            {% if no_of_tickets >= 10 %}
+            <div class="container">
+                <ul class="pagination">
+        
+                    {% if is_previous %}
+                    <li class="page-item">
+                        <a href='{{ url_for('index',page_no = current_page - 1) }}' class="page-link" role="button" aria-pressed="true">Previous</a>
+                    </li>
+                    {% else %}
+                    <li class="page-item disabled">
+                        <a href='{{ url_for('index',page_no = current_page - 1) }}' class="page-link" role="button" aria-pressed="true">Previous</a>
+                    </li>
+                    {% endif %}
 
-                <li class="page-item active">
-                    <a href='{{ url_for('index',page_no = current_page) }}' class="page-link" role="button" aria-pressed="true">{{ current_page }}</a>
-                </li>
+                    <li class="page-item active">
+                        <a href='{{ url_for('index',page_no = current_page) }}' class="page-link" role="button" aria-pressed="true">{{ current_page }}</a>
+                    </li>
 
-                {% if is_next %}
-                <li class="page-item">
-                    <a href='{{ url_for('index',page_no = current_page + 1) }}' class="page-link" role="button" aria-pressed="true">Next</a>
-                </li>
-                {% else %}
-                <li class="page-item disabled">
-                    <a href='{{ url_for('index',page_no = current_page + 1) }}' class="page-link" role="button" aria-pressed="true">Next</a>
-                </li>
-                {% endif %}
-            </ul>
-        </div>
+                    {% if is_next %}
+                    <li class="page-item">
+                        <a href='{{ url_for('index',page_no = current_page + 1) }}' class="page-link" role="button" aria-pressed="true">Next</a>
+                    </li>
+                    {% else %}
+                    <li class="page-item disabled">
+                        <a href='{{ url_for('index',page_no = current_page + 1) }}' class="page-link" role="button" aria-pressed="true">Next</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+            {% endif %}
         {% endif %}
 
+        <!-- Error message -->
         {% if not tickets_found %}
         <div class="alert alert-danger">
             <p> Error Occurred! :  {{ticket_list[0].error_message}}</p>

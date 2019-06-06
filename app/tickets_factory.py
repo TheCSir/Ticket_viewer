@@ -126,12 +126,36 @@ class ObjectFactory:
             ticket.set_assignee_id(json_ticket['assignee_id'])
 
         if json_ticket['created_at']:
-            ticket.set_created_at(json_ticket['created_at'])
+            ticket.set_created_at(self.get_date(json_ticket['created_at']))
 
         if json_ticket['updated_at']:
-            ticket.set_updated_at(json_ticket['updated_at'])
+            ticket.set_updated_at(self.get_date(json_ticket['updated_at']))
             
         if json_ticket['due_at']:
-            ticket.set_due_at(json_ticket['due_at'])
+            ticket.set_due_at(self.get_date(json_ticket['due_at']))
 
         return ticket
+        
+
+    def get_date(self, date):
+        """ Helper function to change json date to readable date.
+            this function convert 
+            '2019-01-02T01:02:03Z' to  'Date: 02/01/2019 Time:01:02:03'
+
+	    Args:
+	        date: Json date
+
+	    Returns:
+            str_date: string, readable date time string
+	    """
+
+        # crete a dateobject by using library
+        date_object = datetime.datetime.strptime(date, '%Y-%m-%dT%H:%M:%SZ')
+
+        # farmat a string with above date object
+        readable_date = "{D}/{M}/{Y} Time: {h}:{m}:{s}" \
+        .format(D=date_object.day, M=date_object.month, Y=date_object.year,
+        h=date_object.hour,m=date_object.minute,s=date_object.second)
+
+        return readable_date
+
