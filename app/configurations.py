@@ -10,8 +10,8 @@ class Configuration:
     """
 
 	DOMAIN = 'https://interntest.zendesk.com'
-	USER = 'shehanchathura@gmail.com/token'
-	TOKEN = '2B4O0mN5Ya3zkHLNHfw4gIQcc4w8tdqWm9PUJSGh'
+	USER = ''
+	TOKEN = ''
 
 	def getUserID(self):
 		return self.USER
