@@ -105,3 +105,4 @@ venv.bak/
 
 #userSpecific
 /app/configurations.py
+app/configurations.py
