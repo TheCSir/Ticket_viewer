@@ -104,4 +104,4 @@ venv.bak/
 .mypy_cache/
 
 #userSpecific
-configurations.py
+app/configurations.py
