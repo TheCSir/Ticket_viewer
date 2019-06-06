@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <title>Ticket Details</title>    
+</head>
+<body>
+    <div class="container">
+        <div class="header_text">
+            <h1>Ticket Dashboard</h1>
+        </div>
+
+        {% if ticket_found %}
+        <div>
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <td>
+                            <span class="caption">Subject: </span>{{ticket.subject}}
+                        </td>
+                        <td>
+                            <span class="caption">Status: </span>{{ticket.status}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="caption">Ticket Posted: </span>{{ticket.created_at}}
+                        </td>
+                        <td>
+                            <span class="caption">Priority: </span>{{ticket.priority}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="caption">Last Updated:</span> {{ticket.updated_at}}
+                        </td>
+                        <td>
+                            <span class="caption">Type:</span> {{ticket.type}}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <table class="table">        
+                <tbody>   
+                    <tr>
+                        <td><span class="caption"> Requester:</span> {{ticket.requester_id}}</td>
+                        <td><span class="caption">Assignee:</span> {{ticket.assignee_id}}</td>
+                    </tr>
+                    <tr>
+                        <td><span class="caption">Assignee Id:</span> {{ticket.assignee_id}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <td>
+                            <span class="caption">Description:</span> {{ticket.description}}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        {% endif %}
+    </div>
+</body>

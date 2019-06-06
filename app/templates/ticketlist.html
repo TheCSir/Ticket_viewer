@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <title>Ticket Dashboard</title>
+</head>
+<body>
+    <div class="container">
+        <div class="header_text">
+            <h1>Ticket Dashboard</h1>
+        </div>
+
+
+        {% if tickets_found %}
+        <div>
+
+            {% for ticket in ticket_list %}
+            <div class="" onclick="location.href='{{ url_for('disply_selected_ticket', ticket_id = ticket['id']) }}';" style="cursor: pointer;">
+                <h4 >{{ticket['subject']}}</h4>
+                <p align=justify>{{ticket['description']}}</p>
+            </div>
+            {% endfor %}
+
+        </div>
+        {% endif %}
+
+        {% if not tickets_found %}
+        <div class="">
+            <strong>Oops!</strong> Error Occurred: {{ticket_list[0].error_message}}
+        </div>
+        {% endif %}
+
+        <footer class="">
+            {% if is_previous %}
+            <a href='{{ url_for('index',page_no = current_page - 1) }}' class="" role="button" aria-pressed="true">Previous</a>
+            {% endif %}
+            {% if is_next %}
+            <a href='{{ url_for('index',page_no = current_page + 1) }}' class="" role="button" aria-pressed="true">Next</a>
+            {% endif %}
+        </footer>
+ 
+    </div>
+
+</body>
