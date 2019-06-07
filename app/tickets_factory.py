@@ -8,9 +8,9 @@ class TicketObjectCreator:
     object(s) """
 
     @staticmethod
-    def genarate_ticket(id):
+    def generate_ticket(id):
         """
-        genarate a ticket object form a API results
+        generate a ticket object form a API results
         by calling Object factory.
 
         Args:
@@ -141,7 +141,8 @@ class ObjectFactory:
 
     @staticmethod
     def get_date(date):
-        """ Helper function to change json date to readable date.
+        """
+            Helper function to change json date to readable date.
             this function convert 
             '2019-01-02T01:02:03Z' to  'Date: 02/01/2019 Time:01:02:03'
 

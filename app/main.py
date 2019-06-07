@@ -77,7 +77,7 @@ def display_selected_ticket(ticket_id):
 
     # generate ticket object
     oc = TicketObjectCreator()
-    ticket = oc.genarate_ticket(ticket_id)
+    ticket = oc.generate_ticket(ticket_id)
 
     # check if data received 
     if ticket.id:
