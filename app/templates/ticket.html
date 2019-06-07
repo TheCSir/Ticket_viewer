@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Ticket Details</title>
+    <!-- Stylesheets -->
+    <link rel="stylesheet" media="screen" href="{{ url_for('static', filename='bootstrap.min.css') }}">
+    <link rel="stylesheet" media="screen" href="{{ url_for('static', filename='ticketstyles.css') }}">
+</head>
+<body>
+<div class="container">
+    <div class="jumbotron text-center">
+        <h1>Ticket Details</h1>
+    </div>
+
+    <!-- if ticket data is successfully retrieved  -->
+    {% if ticket_found %}
+        <div class="container single-ticket">
+            <!-- Ticket details table -->
+            <table class="table">
+                <tbody>
+                <tr>
+                    <td>
+                        <span class="font-weight-bold">Subject : </span>{{ ticket.subject }}
+                    </td>
+                    <td>
+                        <span class="font-weight-bold">Status : </span>{{ ticket.status }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="font-weight-bold"> Requester :</span> {{ ticket.requester_id }}
+                    </td>
+                    <td>
+                        <span class="font-weight-bold">Priority : </span>{{ ticket.priority }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="font-weight-bold">Assignee : </span> {{ ticket.assignee_id }}
+                    </td>
+                    <td>
+                        <span class="font-weight-bold">Type : </span> {{ ticket.type }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="font-weight-bold">Recipient : </span> {{ ticket.recipient }}
+                    </td>
+                    <td>
+                        <span class="font-weight-bold">Due at : </span> {{ ticket.recipient }}
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <table class="table">
+                <tbody>
+                <tr>
+                    <td class="text-justify">
+                        <span class="font-weight-bold">Description : </span> {{ ticket.description }}
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <table class="table">
+                <tbody>
+                <tr>
+                    <td class="text-center">
+                        <span class="font-weight-bold">Created at : </span> {{ ticket.created_at }}
+                    </td>
+                    <td class="text-center">
+                        <span class="font-weight-bold text-center">Updated at :</span> {{ ticket.updated_at }}
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    {% endif %}
+
+    <!-- Error message -->
+    {% if not ticket_found %}
+        <div class="alert alert-danger">
+            <p> Error! {{ ticket.error_message }}</p>
+        </div>
+    {% endif %}
+</div>
+
+<!-- Back Button -->
+<div class="container">
+    <a href='{{ url_for('index',page_no = 1) }}' class="btn btn-outline-primary" role="button" aria-pressed="true">Return
+        to main Menu</a>
+</div>
+</body>

@@ -1,0 +1,33 @@
+/*
+* === Server CSS methods ===
+*/
+
+/*
+* — CSS for ticket container in ticket list —
+*/
+.list-ticket {
+    border-radius: 10px;
+    border: 2px solid;
+    margin-bottom: 10px;
+}
+
+.list-ticket:hover {
+    background-color: #dceaf7;
+}
+
+
+/*
+* — CSS for single ticket container —
+*/
+.single-ticket {
+    border-radius: 10px;
+    border: 5px solid;
+    margin-bottom: 10px;
+}
+
+/*
+* — CSS for NO of tickets info panel —
+*/
+.no_of_tickets {
+    margin-bottom: 20px;
+}
