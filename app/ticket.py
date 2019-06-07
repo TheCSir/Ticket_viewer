@@ -2,7 +2,7 @@ class Ticket:
     """ 
     Ticket Class defines the ticket object.
     THis class contains initial parameters for a ticket
-    and serias of setters for the object.
+    and series of setters for the object.
 
     'id'        =	integer,Ticket id
     'type'      =	string, the type of this ticket.
@@ -72,5 +72,3 @@ class Ticket:
 
     def set_error_message(self, error_message):
         self.error_message = error_message
-
-
