@@ -9,11 +9,20 @@ This program can be used to used to view list of all the tickets and display a p
 ```
 $ pip install -r requirements.txt
 ```
-4. Then cd in to the app folder and run the following command
+** if you encounter any problems doing above step please install the packages manually by running these commands.
+```
+$ pip install Flask
+$ pip install requests
+$ pip install Flask_Assets
+```
+4. cd into app folder and open configurations.py and open with an editor.
+5. Insert your Zendesk account email in the filed { your email here } and your API token { your token here } respectively in line 20 and 21.
+6. Save changes and exit. <br/> ** if you don't have an API token generated you can do it by following [This](https://support.zendesk.com/hc/en-us/articles/226022787-Generating-a-new-API-token-) link.
+7. Then cd in to the app folder and run the following command.
 ```
 $ python main.py
 ```
-5. While the flask app is running in the background navigate to following URL from your browser.
+8. While the flask app is running in the background navigate to following URL from your browser.
 ```
 http://localhost:5000/index/
 ```
