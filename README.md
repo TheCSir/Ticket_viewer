@@ -33,3 +33,5 @@ $ python unit_tests.py
 3. tickets_factory.py : This module is responsible for creating above ticket object from the given inputs.
 
 4. zendesk_api.py: This module is responsible for handling connections to zendesk API. 
+
+5. unit_tests.py: This module has all the unit tests for the app.
