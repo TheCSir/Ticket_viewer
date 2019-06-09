@@ -17,8 +17,8 @@ class Configuration:
     """
 
     DOMAIN = 'https://interntest.zendesk.com'
-    USER = ''
-    TOKEN = ''
+    USER = '{Your email here}/token'
+    TOKEN = '{Your token here}'
 
     ALL_TICKET_JSON = '/api/v2/tickets.json'
     SELECTED_TICKET_JSON = '/api/v2/tickets/'  # add {id}.json to the end
