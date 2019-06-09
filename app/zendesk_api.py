@@ -1,6 +1,6 @@
 import requests
-from requests.models import Response
 from configurations import Configuration
+from requests.models import Response
 
 
 class ApiCall:
@@ -28,7 +28,7 @@ class ApiCall:
             the_response = Response()
             the_response.code = "expired"
             the_response.error_type = "expired"
-            the_response.status_code = 400
+            the_response.status_code = 400  # default value for docs
             the_response._content = b'{ "error" : \
             " Can not connect to Zendesk API at the moment" }'
             result = the_response
@@ -67,27 +67,27 @@ class ApiResult:
 
 
 class ApiQuery:
-    ''' This class define the types of queries '''
+    """ This class define the types of queries """
 
     @staticmethod
     def get_all():
         """
         Returns:
             String: URL string to get all tickets.
-            ( this is specified in zendesk API documentation )
         """
 
-        return "/api/v2/tickets.json"
+        return Configuration().get_all_ticket_url()
 
     @staticmethod
-    def get_selected_ticket(id):
+    def get_selected_ticket(selected_id):
         """
         Returns:
             String: URL string to get a specific ticket.
-            ( this is specified in zendesk API documentation )
         """
 
-        return "/api/v2/tickets/{ticket_id}.json".format(ticket_id=id)
+        part_from_config = Configuration().get_single_ticket_url()
+        return part_from_config + "{ticket_id}.json".format(
+            ticket_id=selected_id)
 
     @staticmethod
     def get_full_query(url):

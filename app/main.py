@@ -1,6 +1,5 @@
 from flask import Flask, render_template
 from tickets_factory import TicketObjectCreator
-from flask_assets import Bundle, Environment
 
 app = Flask(__name__)
 
@@ -27,6 +26,8 @@ def index(page_no=1):
 
     # value of number of results in a page 
     no_of_tickets = 25
+
+    # placeholder for is tickets successfully retrieved
     tickets_found = True
 
     # check if data received 
@@ -49,8 +50,14 @@ def index(page_no=1):
         no_of_tickets = end_ticket - start_ticket
         is_next = False
 
-    if not tickets_found:
-        return render_template('ticketlist.html', tickets_found=tickets_found,
+    # if no tickets or user input invalid page umber
+    if not tickets_found or no_of_tickets <= 0:
+
+        # set a message for out of bound page number from user
+        if not tickets[0].error_message:
+            tickets[0].error_message = "Invalid page number"
+
+        return render_template('ticketlist.html', tickets_found=False,
                                ticket_list=tickets)
     else:
 

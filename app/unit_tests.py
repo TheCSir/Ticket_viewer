@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
-import unittest
 import json
-from zendesk_api import ApiCall, ApiQuery, ApiResult
-from requests.models import Response
+import unittest
+
 from configurations import Configuration
+from requests.models import Response
 from tickets_factory import *
-from ticket import Ticket
+from zendesk_api import ApiCall, ApiQuery, ApiResult
 
 
 class UnitTests(unittest.TestCase):
-    '''Unit Tests class '''
+    """ Unit Tests class """
 
     """  Tests for Api calls and url generations """
 
