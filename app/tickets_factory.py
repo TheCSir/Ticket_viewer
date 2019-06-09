@@ -1,6 +1,7 @@
-from zendesk_api import ApiCall, ApiQuery, ApiResult
-from ticket import Ticket
 import datetime
+
+from ticket import Ticket
+from zendesk_api import ApiCall, ApiQuery
 
 
 class TicketObjectCreator:
@@ -34,7 +35,7 @@ class TicketObjectCreator:
             ticket = factory.create_ticket_object(ticket_data)
         else:
             ticket = Ticket()
-            ticket.set_error_message(response.error_message)
+            ticket.error_message = response.error_message
 
         return ticket
 
@@ -78,7 +79,7 @@ class TicketObjectCreator:
             else:
                 tickets.clear()
                 ticket = Ticket()
-                ticket.set_error_message(response.error_message)
+                ticket.error_message = response.error_message
                 tickets.append(ticket)
                 break
 
@@ -102,40 +103,40 @@ class ObjectFactory:
         ticket = Ticket()
 
         if json_ticket['id']:
-            ticket.set_id(json_ticket['id'])
+            ticket.id = json_ticket['id']
 
         if json_ticket['type']:
-            ticket.set_type(json_ticket['type'])
+            ticket.type = json_ticket['type']
 
         if json_ticket['subject']:
-            ticket.set_subject(json_ticket['subject'])
+            ticket.subject = json_ticket['subject']
 
         if json_ticket['description']:
-            ticket.set_description(json_ticket['description'])
+            ticket.description = json_ticket['description']
 
         if json_ticket['priority']:
-            ticket.set_priority(json_ticket['priority'])
+            ticket.priority = json_ticket['priority']
 
         if json_ticket['status']:
-            ticket.set_status(json_ticket['status'])
+            ticket.status = json_ticket['status']
 
         if json_ticket['recipient']:
-            ticket.set_recipient(json_ticket['recipient'])
+            ticket.recipient = json_ticket['recipient']
 
         if json_ticket['requester_id']:
-            ticket.set_requester_id(json_ticket['requester_id'])
+            ticket.requester_id = json_ticket['requester_id']
 
         if json_ticket['assignee_id']:
-            ticket.set_assignee_id(json_ticket['assignee_id'])
+            ticket.assignee_id = json_ticket['assignee_id']
 
         if json_ticket['created_at']:
-            ticket.set_created_at(self.get_date(json_ticket['created_at']))
+            ticket.created_at = self.get_date(json_ticket['created_at'])
 
         if json_ticket['updated_at']:
-            ticket.set_updated_at(self.get_date(json_ticket['updated_at']))
+            ticket.updated_at = self.get_date(json_ticket['updated_at'])
 
         if json_ticket['due_at']:
-            ticket.set_due_at(self.get_date(json_ticket['due_at']))
+            ticket.due_at = self.get_date(json_ticket['due_at'])
 
         return ticket
 
